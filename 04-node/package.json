@@ -1,0 +1,9 @@
+{
+    "name": "ejemplos-node",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Ejemplos de Node.js",
+	"dependencies": {
+		"ms": "^2.1.3"
+	}
+}
