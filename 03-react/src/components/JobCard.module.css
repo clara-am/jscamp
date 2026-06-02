@@ -1,0 +1,79 @@
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+}
+
+.cardLink:hover {
+    transform: translateY(-4px);
+    color: var(--primary-dark)
+}
+
+.cardLink:hover .card {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.cardLink:focus-visible {
+    outline: 2px solid #0066cc;
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.card {
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 0.75rem;
+}
+.title {
+    text-decoration: none;
+    color: inherit;
+}
+.meta {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    margin-bottom: 1rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.salary {
+    font-weight: 600;
+    color: #0066cc;
+}
+
+.tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+    span {
+        background: var(--input-bg);
+        color: var(--text-primary);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;    
+        padding: 0.25rem 0.5rem;
+    }
+}

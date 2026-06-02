@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJobs - Empleos</title>
+    <meta name="description" content="Encuentra las mejores ofertas de trabajo para desarrolladores en DevJobs.">
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+</head>
+<body>
+    <header>
+        <h1>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            DevJobs
+        </h1>
+        <nav>
+            <a href="./index.html">Inicio</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Elemento con clase -->
+        <section class="jobs-search">
+            <h2>React.js primeros pasos</h2>
+            <h2>Empleos disponibles</h2>
+            <div id="react-root"></div> <!--Aquí se renderizará el componente de React -->
+            <!-- 1. Cargar React y ReactDOM desde CDN -->
+            <script type="module">
+                import React from 'https://esm.sh/react?dev'
+                import ReactDOM from 'https://esm.sh/react-dom/client?dev'
+                window.React = React
+                window.ReactDOMClient = ReactDOM
+            </script>
+            <!-- 2. Cargar Babel para transformar JSX. compila en tiempo de ejecución. De normal, no se hace así; se compila antes -->
+            <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+            <!-- 3. Nuestro código React CON JSX -->
+            <script type="text/babel">
+                // Ahora podemos escribir JSX directamente
+                function ButtonApply () {
+                    const [aplicado, setAplicado] = React.useState(false);
+                    // const [firstNum, , thirdNum , ...othersNum] = [1, 2, 3, 4, 5]; // Desestructuración de arrays: firstNum = 1, thirdNum=3, othersNum = [4, 5] y el 2 se queda sin nombrar
+                    // const [config, setConfig] = React.useState({ tema: 'oscuro', idioma: 'es' })
+                    const text = aplicado ? '¡Aplicado!' : 'Aplicar';
+                    function handleClick(event) {
+                        const element = event.target
+                        if (element.classList.contains('button-apply-job')) {
+                            setAplicado(true)
+                        }
+                    }
+                    return (
+                        <button 
+                            className={aplicado ? 'button-apply-job is-applied' : 'button-apply-job'}
+                            disabled={aplicado}
+                            onClick={handleClick}
+                        >{text}</button>
+                    )
+                }
+                function JobCard({ titulo, empresa, ubicacion, descripcion, salario, modalidad, nivel, data }) {
+                    
+                    return (
+                        <article className="job-listing-card"
+                            data-modalidad={data?.modalidad}
+                            data-nivel={data?.nivel}
+                            data-tech={data?.technology}
+                            >
+                            <div>
+                                <h3>{titulo}</h3>
+                                <small>
+                                {empresa} | {ubicacion}
+                                </small>
+                                <p>{descripcion}</p>
+                                <div className="job-details">
+                                {salario && <span>💰 {salario}</span>}
+                                {modalidad && <span>📍 {modalidad}</span>}
+                                {nivel && <span>📊 {nivel}</span>}
+                                </div>
+                            </div>
+                            <ButtonApply />
+                        </article>
+                    )
+                }
+
+                function Contador () {
+                    const [count, setCount] = React.useState(0);
+                    const incrementar = () => {
+                        setCount((prevCount) => prevCount + 1)
+                    }
+
+                    return (
+                        <div className="contador">
+                            <p>Contador</p>
+                            <p>Has hecho clic {count} veces</p>
+                            <button onClick={incrementar}>Incrementar</button>
+                            <button onClick={() => setCount(0)}>Resetear</button>
+                        </div>
+                    )
+                }
+                function App () {
+                    return (
+                        <div className="jobs-listings">
+                            <JobCard
+                                titulo="Desarrollador Frontend"
+                                empresa="Tech Solutions Inc."
+                                ubicacion="Remoto"
+                                descripcion="..."
+                                salario="50,000 USD"
+                                modalidad="Remoto"
+                                nivel="Junior"
+                                data={{
+                                    modalidad: 'remoto',
+                                    nivel: 'junior',
+                                    technology: 'react'
+                                }}
+                            />
+                            <Contador/>
+                        </div>
+                    )
+                }
+
+                // Renderizar
+                window.onload = () => {
+                    const rootEl = document.querySelector('#react-root')
+                    const root = ReactDOMClient.createRoot(rootEl)
+                    root.render(<App />)
+                }
+            </script>
+        </section>
+        
+        <!-- <section> 
+            <header>
+                <h2>Resultados de la búsqueda</h2>
+            </header>
+
+            <div class="jobs-listings">
+            </div>
+
+            <nav class="pagination"></nav>
+        </section> -->
+    </main>
+    <footer>
+        <small>&copy; 2026 DevJobs. Todos los derechos reservados.</small>
+    </footer>
+</body>
+</html>

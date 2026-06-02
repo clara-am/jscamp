@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJobs - Empleos</title>
+    <meta name="description" content="Encuentra las mejores ofertas de trabajo para desarrolladores en DevJobs.">
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- <script type="module">
+        import React from "https://esm.sh/react?dev"; //Nucleo de React
+        import { createRoot } from "https://esm.sh/react-dom/client?dev"; //createRoot para React 18+
+        const titulo = React.createElement("h1", {style: {color: "#09f"}}, "Hola, React!");
+        const rootEl = document.querySelector("#react-root");
+        const root = createRoot(rootEl);
+        root.render(titulo);
+    </script> -->
+</head>
+</head>
+<body>
+    <header>
+        <h1>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            DevJobs
+        </h1>
+        <nav>
+            <a href="./index.html">Inicio</a>
+        </nav>
+
+        <div>
+            <devjobs-avatar service="google" username="google.com" size="32">
+        </div>
+    </header>
+
+    <main>
+        <!-- Elemento con clase -->
+        <section class="jobs-search">
+            <h3>React.js primeros pasos</h3>
+            <div id="react-root"></div> <!--Aquí se renderizará el componente de React -->
+            <!-- 1. Cargar React y ReactDOM desde CDN -->
+            <script type="module">
+                import React from 'https://esm.sh/react?dev'
+                import ReactDOM from 'https://esm.sh/react-dom/client?dev'
+                window.React = React
+                window.ReactDOMClient = ReactDOM
+            </script>
+            <!-- 2. Cargar Babel para transformar JSX. compila en tiempo de ejecución. De normal, no se hace así; se compila antes -->
+            <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+            <!-- 3. Nuestro código React CON JSX -->
+            <script type="text/babel">
+                // Ahora podemos escribir JSX directamente
+                function Saludo({nombre}) { // Componente funcional que recibe props; primera letra mayúscula
+                    return <h1 style={{color: '#09f'}}>Hola, {nombre}!</h1>
+                }
+
+                function App () {
+                    return (
+                        <div>
+                            <Saludo nombre="Clara" />
+                        </div>
+                    )
+                }
+
+                // Renderizar
+                window.onload = () => {
+                    const rootEl = document.querySelector('#react-root')
+                    const root = ReactDOMClient.createRoot(rootEl)
+                    root.render(<App />)
+                }
+            </script>
+        </section>
+        
+        <!-- <section> 
+            <header>
+                <h2>Resultados de la búsqueda</h2>
+            </header>
+
+            <div class="jobs-listings">
+            </div>
+
+            <nav class="pagination"></nav>
+        </section> -->
+    </main>
+    <footer>
+        <small>&copy; 2026 DevJobs. Todos los derechos reservados.</small>
+    </footer>
+</body>
+</html>
